@@ -19,10 +19,9 @@ $data = array_map('str_getcsv', file('export-tokenholders-for-contract-0xe3b4285
 array_walk($data, function(&$a) use ($data) {
 	$a = array_combine($data[0], $a);
 });
-array_shift($data); # remove column header
+array_shift($data); // Remove column header
 
 echo 'Got ' . count($data) . ' addresses, removing excluded...<br/>';
-
 foreach ($data as $key => $row)
 {
 	if (true === in_array($row['HolderAddress'], array_keys($excludes)))
